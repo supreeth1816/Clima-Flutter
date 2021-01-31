@@ -39,10 +39,28 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-          child: Text("Hello"),
+    String myMargin = '10';
+
+    dynamic purple = Colors.deepPurple;
+
+    try {
+      double myMarginAsDouble = double.parse(myMargin);
+      return Scaffold(
+        body: Container(
+          margin: EdgeInsets.all(myMarginAsDouble),
+          color: purple,
         ),
       );
+    }
+    catch(e) {
+      print("There is an Exception: $e");
+      return Scaffold(
+        body: Container(
+          margin: EdgeInsets.all(40),
+          color: purple,
+        ),
+      );
+
+    }
   }
 }
