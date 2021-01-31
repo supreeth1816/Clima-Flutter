@@ -3,11 +3,32 @@ import 'package:geolocator/geolocator.dart';
 
 
 class LoadingScreen extends StatefulWidget {
+
+
+
   @override
   _LoadingScreenState createState() => _LoadingScreenState();
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+
+  @override
+
+  //initstate is called when object is inserted into a tree
+  //build method is called after init state
+  void initState() {
+    super.initState();
+    getLocation();
+  }
+
+  @override
+  //Deactivate method is end of lifecycle of Stateless widget lifecycle
+  //It is called when  stateless widget is destroyed
+  void deactivate() {
+    // TODO: implement deactivate
+    super.deactivate();
+  }
+
 
   void getLocation() async {
 
@@ -20,14 +41,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            //Get the current location
-            getLocation();
-          },
-          child: Text('Get Location'),
+          child: Text("Hello"),
         ),
-      ),
-    );
+      );
   }
 }
