@@ -45,6 +45,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
     try {
       double myMarginAsDouble = double.parse(myMargin);
+      if(myMarginAsDouble > 20){
+        
+      }
       return Scaffold(
         body: Container(
           margin: EdgeInsets.all(myMarginAsDouble),

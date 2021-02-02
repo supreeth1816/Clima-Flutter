@@ -2,6 +2,7 @@
 
 # Goals
 
+- Dart programming practice
 - How to use Dart to perform asynchronous tasks.
 - Understand async and await.
 - Learn about Futures and how to work with them.
