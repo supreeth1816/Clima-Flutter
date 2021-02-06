@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:clima/services/location.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 
 class LoadingScreen extends StatefulWidget {
@@ -11,7 +14,6 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-
   @override
 
   //initstate is called when object is inserted into a tree
@@ -19,6 +21,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
     getLocation();
+    getData();
   }
 
   @override
@@ -29,29 +32,32 @@ class _LoadingScreenState extends State<LoadingScreen> {
     super.deactivate();
   }
 
+  void getLocation(){
+    Location myLocation = new Location();
+    print(myLocation.longitude);
+ }
 
-  void getLocation() async {
+ void getData() async {
+   http.Response response = await http.get('https://www.apple.com');
+   print(response.body);
 
-    //Get latitude longitude position using this
-    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.lowest);
-    print(position);
-  }
+ }
 
   @override
   Widget build(BuildContext context) {
+
     String myMargin = '10';
-
     dynamic purple = Colors.deepPurple;
-
     try {
       double myMarginAsDouble = double.parse(myMargin);
-      if(myMarginAsDouble > 20){
-        
-      }
+
       return Scaffold(
         body: Container(
-          margin: EdgeInsets.all(myMarginAsDouble),
           color: purple,
+          child: SpinKitDoubleBounce(
+            color: Colors.white,
+            size: 100,
+          ),
         ),
       );
     }
